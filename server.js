@@ -42,7 +42,7 @@ app.delete('/api/users/:id', db.deleteUser);
 
 //Purchases
 app.get('/api/purchases/', db.getAllPurchases);
-app.get('/api/purchases/:id' , db.getPurchasesByID);
+app.get('/api/purchases/:id' , db.getPurchase_itemsByID);
 app.post('/api/purchases', db.insertPurchases);
 app.put('/api/purchases/:id', db.updatePurchasest);
 app.delete('/api/purchases/:id', db.deletePurchases);

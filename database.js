@@ -181,8 +181,8 @@ function getAllPurchases(req, res) {
         })
 }
 
-function getPurchases(req, res) {
-    db.any('select * from purchases where purchases_id =' + req.params.id)
+function getPurchasesByID(req, res) {
+    db.any('select * from purchases where purchase_id =' + req.params.id)
         .then(function (data) {
             res.status(500)
                 .json({
@@ -203,8 +203,8 @@ function getPurchases(req, res) {
 }
 
 function insertPurchases(req, res) {
-    db.none('insert into purchases(purchases_id, title, price,state, created_at, tags)' +
-        'values(${purchases_id}, ${title}, ${price}, ${state}, ${created_at}, ${tags})',
+    db.none('insert into purchases(purchase_id, title, price,state, created_at, tags)' +
+        'values(${purchase_id}, ${title}, ${price}, ${state}, ${created_at}, ${tags})',
         req.body)
         .then(function (data) {
             res.status(200)
@@ -219,7 +219,7 @@ function insertPurchases(req, res) {
 }
 
 function updatePurchases(req, res) {
-    db.none('update purchases set purchases_id = ${purchases_id} ,title = ${title} , price= ${price} ,state= ${state} , tags= ${tags} where purchases_id ='+ req.params.id , req.body)
+    db.none('update purchases set purchase_id = ${purchase_id} ,title = ${title} , price= ${price} ,state= ${state} , tags= ${tags} where purchase_id ='+ req.params.id , req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -233,7 +233,7 @@ function updatePurchases(req, res) {
 }
 
 function deletePurchases(req, res) {
-    db.none('delete from purchases where purchases_id ='+ req.params.id , req.body)
+    db.none('delete from purchases where purchase_id ='+ req.params.id , req.body)
         .then(function (data) {
             res.status(200)
                 .json({
@@ -263,7 +263,7 @@ function getAllPurchase_items(req, res) {
         })
 }
 
-function getPurchase_items(req, res) {
+function getPurchase_itemsByID(req, res) {
     db.any('select * from purchase_items where id =' + req.params.id)
         .then(function (data) {
             res.status(500)
@@ -352,7 +352,7 @@ module.exports = {
     getPurchase_itemsByID,
     insertPurchase_items,
     updatePurchase_items,
-    deletePurchase_items, 
+    deletePurchase_items
 };
 
 
